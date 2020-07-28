@@ -24,7 +24,7 @@ const RegisterForm = () => {
   const onRegisterSubmit = (evt) => {
     evt.preventDefault();
     axiosWithAuth()
-      .post("/api/auth/register", registerFormValues)
+      .post("/auth/register", registerFormValues)
       .then((res) => {
         console.log(res);
         history.push("./login");

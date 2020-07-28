@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-
+import { useHistory } from "react-router-dom";
+import jwt_decode from "jwt-decode";
 const initialLoginFormValues = {
   username: "",
   password: "",
@@ -10,6 +11,7 @@ const LoginForm = () => {
   const [loginFormValues, setLoginFormValues] = useState(
     initialLoginFormValues
   );
+  const history = useHistory();
   const onLoginTextChange = (evt) => {
     const { name, value } = evt.target;
     setLoginFormValues({ ...loginFormValues, [name]: value });
@@ -18,9 +20,19 @@ const LoginForm = () => {
   const onLoginSubmit = (evt) => {
     evt.preventDefault();
     axiosWithAuth()
-      .post("/api/auth/login", loginFormValues)
+      .post("/auth/login", loginFormValues)
       .then((res) => {
-        console.log(res);
+        const { userid, role } = jwt_decode(res.data.token);
+        if (res) {
+          localStorage.setItem("token", res.data.token);
+          if (role === "instructor") {
+            history.push("/instructor");
+          } else {
+            history.push("/client");
+          }
+        } else {
+          history.push("/login");
+        }
       })
       .catch((err) => {
         console.log(err);
