@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import Class from "./Class";
+import InstructorClassList from "./InstructorClassList";
 import { Link } from "react-router-dom";
 
 const InstructorDashboard = () => {
@@ -25,7 +25,7 @@ const InstructorDashboard = () => {
   return (
     <>
       <Link to="/createclass">Create a Class</Link>
-      <Class classes={classes} />
+      <InstructorClassList classes={classes} />
     </>
   );
 };
