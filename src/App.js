@@ -5,6 +5,7 @@ import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
 import InstructorDashboard from "./components/InstructorDashboard";
 import ClientDashboard from "./components/ClientDashboard";
+import CreateClass from "./components/CreateClass";
 
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
         <Route exact path="/register" component={RegisterForm} />
         <Route exact path="/instructor" component={InstructorDashboard} />
         <Route exact path="/client" component={ClientDashboard} />
+        <Route exact path="/createclass">
+          <CreateClass />
+        </Route>
       </Router>
     </div>
   );

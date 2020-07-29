@@ -22,9 +22,8 @@ const LoginForm = () => {
     axiosWithAuth()
       .post("/auth/login", loginFormValues)
       .then((res) => {
-        const { userid, role } = jwt_decode(res.data.token);
+        const { userid, role } = jwt_decode(token);
         if (res) {
-          localStorage.setItem("token", res.data.token);
           if (role === "instructor") {
             history.push("/instructor");
           } else {
