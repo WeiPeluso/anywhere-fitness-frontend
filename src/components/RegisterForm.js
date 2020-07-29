@@ -16,15 +16,17 @@ const RegisterForm = () => {
   const history = useHistory();
 
   const onRegisterTextChange = (evt) => {
+    evt.preventDefault();
     const { name, value } = evt.target;
 
     setRegisterFormValues({ ...registerFormValues, [name]: value });
   };
 
   const onRegisterSubmit = (evt) => {
+    console.log("i am here");
     evt.preventDefault();
     axiosWithAuth()
-      .post("/api/auth/register", registerFormValues)
+      .post("/auth/register", registerFormValues)
       .then((res) => {
         console.log(res);
         history.push("./login");
