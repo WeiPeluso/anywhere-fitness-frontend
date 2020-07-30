@@ -173,8 +173,8 @@ const Button = styled.button`
   text-transform: uppercase;
   letter-spacing: 2.5px;
   font-weight: 500;
-  color: #000;
-  background-color: #fff;
+  color: #ffa69e;
+  background-color: #b8f2e6;
   border: none;
   border-radius: 45px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
@@ -189,9 +189,9 @@ const Button = styled.button`
   margin-top: 20px;
 
   &:hover {
-    background-color: #b8f2e6;
-    box-shadow: 0px 15px 20px #b8f2e6;
-    color: #ffa69e;
+    background-color: #ffa69e;
+    box-shadow: 0px 15px 20px #ffa69e;
+    color: #b8f2e6;
     transform: translateY(-7px);
   }
   &:focus {
