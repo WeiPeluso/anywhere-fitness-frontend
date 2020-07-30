@@ -66,7 +66,7 @@ const Button = styled.button`
 
   &:hover {
     background-color: #b8f2e6;
-    box-shadow: 0px 15px 20px r#b8f2e6;
+    box-shadow: 0px 15px 20px #b8f2e6;
     color: #ffa69e;
     transform: translateY(-7px);
   }
