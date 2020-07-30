@@ -38,6 +38,7 @@ const CreateClass = () => {
   return (
     <div>
       <FormStyle onSubmit={formSubmit}>
+        <Button type="submit">Submit</Button>
         <FormAlign>
           <SelectContainer>
             Class name:
@@ -97,7 +98,7 @@ const CreateClass = () => {
             Intensive Level:
             <Input
               type="text"
-              name="intensiveLevel"
+              name="intensityLevel"
               placeholder="Enter Intensive Level"
               value={formState.intensityLevel}
               onChange={inputChange}
@@ -124,7 +125,6 @@ const CreateClass = () => {
             />
           </SelectContainer>
         </FormAlign>
-        <Button type="submit">Submit</Button>
       </FormStyle>
     </div>
   );
@@ -138,7 +138,7 @@ const FormAlign = styled.div`
   justify-content: flex-end;
   align-items: flex-end;
   max-width: 400px;
-  border: 1px solid black;
+  border: 1px solid #ffa69e;
   padding: 20px;
   border-radius: 10px;
 `;
@@ -146,16 +146,7 @@ const SelectContainer = styled.div`
   display: flex;
   align-items: center;
 `;
-const Select = styled.select`
-  margin: 20px;
-  width: 230px;
-  border: 2px solid black;
-  height: 30px;
-  border-radius: 10px;
-  &:focus {
-    outline: 0;
-  }
-`;
+
 const Input = styled.input`
   margin: 20px;
   width: 230px;
@@ -167,17 +158,16 @@ const Input = styled.input`
     outline: 0;
   }
 `;
-
 const Button = styled.button`
-  width: 140px;
+  width: 240px;
   height: 45px;
   font-family: "Roboto", sans-serif;
-  font-size: 11px;
+  font-size: 15px;
   text-transform: uppercase;
   letter-spacing: 2.5px;
   font-weight: 500;
   color: #000;
-  background: linear-gradient(to right, #aed9e0, #b8f2e6);
+  background-color: #fff;
   border: none;
   border-radius: 45px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
@@ -185,13 +175,16 @@ const Button = styled.button`
   cursor: pointer;
   outline: none;
   display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   margin: 10px;
+  margin-top: 20px;
+
   &:hover {
-    background-color: #2ee59d;
-    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
-    color: #fff;
+    background-color: #b8f2e6;
+    box-shadow: 0px 15px 20px r#b8f2e6;
+    color: #ffa69e;
     transform: translateY(-7px);
   }
   &:focus {
