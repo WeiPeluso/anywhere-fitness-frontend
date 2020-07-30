@@ -2,14 +2,26 @@ import React from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const ClientClassList = (props) => {
-  const cancelEnrollmentHandler = (classId) => {
-    axiosWithAuth()
-      .delete(`client/classes/${classId}`)
+  const cancelEnrollmentHandler = async (aClass) => {
+    await axiosWithAuth()
+      .delete(`client/classes/${aClass.id}`)
       .then((res) => {
-        props.setRefresh(!props.refresh);
+        axiosWithAuth()
+          .put(`/client/classes/${aClass.id}`, {
+            currentAttendeesNo: aClass.currentAttendeesNo - 1,
+          })
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        props.setRefresh(!props.refresh);
       });
   };
   return (
@@ -19,7 +31,7 @@ const ClientClassList = (props) => {
           <div key={index}>
             <button
               onClick={() => {
-                cancelEnrollmentHandler(aClass.id);
+                cancelEnrollmentHandler(aClass);
               }}
             >
               Cancel Enrollment
