@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { useHistory } from "react-router-dom";
 import jwt_decode from "jwt-decode";
@@ -27,6 +27,7 @@ const LoginForm = (props) => {
         localStorage.setItem("token", res.data.token);
         const { role } = jwt_decode(res.data.token);
         props.setRole(role);
+        props.setRefresh(!props.refresh);
         if (res) {
           if (role === "instructor") {
             history.push("/instructor");

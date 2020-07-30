@@ -44,7 +44,7 @@ const ClassPage = (props) => {
       .catch((err) => {
         console.log(err);
       });
-  }, [refresh]);
+  }, [refresh, id, role]);
 
   const deleteHandler = (e) => {
     e.preventDefault();

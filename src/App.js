@@ -8,7 +8,6 @@ import ClientDashboard from "./components/ClientDashboard";
 import CreateClass from "./components/CreateClass";
 import ClassPage from "./components/ClassPage";
 import styled from "styled-components";
-import jwt_decoded from "jwt-decode";
 
 function App() {
   const [status, setStatus] = useState(false);
@@ -52,7 +51,14 @@ function App() {
       <Route
         exact
         path="/login"
-        render={(props) => <LoginForm {...props} setRole={setRole} />}
+        render={(props) => (
+          <LoginForm
+            {...props}
+            setRole={setRole}
+            refresh={refresh}
+            setRefresh={setRefresh}
+          />
+        )}
       />
 
       <Route exact path="/register" component={RegisterForm} />
