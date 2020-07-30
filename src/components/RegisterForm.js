@@ -80,7 +80,7 @@ const RegisterForm = () => {
         >
           <option value=""> -- Please select a role-- </option>
           <option value="instructor">Instructor</option>
-          <option value="student">Student</option>
+          <option value="client">Client</option>
         </Select>
       </label>
 
