@@ -19,10 +19,6 @@ const InstructorDashboard = () => {
       });
   }, [refresh]);
 
-  const createClassHandler = (e) => {
-    e.preventDefault();
-  };
-
   return (
     <>
       <H3>Welcome</H3>
