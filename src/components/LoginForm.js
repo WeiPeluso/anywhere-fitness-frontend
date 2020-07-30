@@ -8,7 +8,7 @@ const initialLoginFormValues = {
   password: "",
 };
 
-const LoginForm = () => {
+const LoginForm = (props) => {
   const [loginFormValues, setLoginFormValues] = useState(
     initialLoginFormValues
   );
@@ -25,7 +25,8 @@ const LoginForm = () => {
       .post("/auth/login", loginFormValues)
       .then((res) => {
         localStorage.setItem("token", res.data.token);
-        const { userid, role } = jwt_decode(res.data.token);
+        const { role } = jwt_decode(res.data.token);
+        props.setRole(role);
         if (res) {
           if (role === "instructor") {
             history.push("/instructor");
@@ -43,23 +44,28 @@ const LoginForm = () => {
   };
   return (
     <FormStyle onSubmit={onLoginSubmit}>
-      <label>Username:&nbsp;</label>
-      <Input
-        type="text"
-        name="username"
-        value={loginFormValues.username}
-        onChange={onLoginTextChange}
-        placeholder="Enter your user name"
-      />
+      <H2>Login</H2>
+      <label>
+        Username:&nbsp;
+        <Input
+          type="text"
+          name="username"
+          value={loginFormValues.username}
+          onChange={onLoginTextChange}
+          placeholder="Enter your user name"
+        />
+      </label>
 
-      <label>Password:&nbsp;</label>
-      <Input
-        type="password"
-        name="password"
-        value={loginFormValues.password}
-        onChange={onLoginTextChange}
-        placeholder="Enter your password"
-      />
+      <label>
+        Password:&nbsp;
+        <Input
+          type="password"
+          name="password"
+          value={loginFormValues.password}
+          onChange={onLoginTextChange}
+          placeholder="Enter your password"
+        />
+      </label>
       <Button>Login</Button>
     </FormStyle>
   );
@@ -83,7 +89,7 @@ const Button = styled.button`
   width: 140px;
   height: 45px;
   font-family: "Roboto", sans-serif;
-  font-size: 11px;
+  font-size: 15px;
   text-transform: uppercase;
   letter-spacing: 2.5px;
   font-weight: 500;
@@ -99,11 +105,12 @@ const Button = styled.button`
   align-items: center;
   justify-content: center;
   margin: 10px;
+  margin-top: 20px;
 
   &:hover {
-    background-color: #2ee59d;
-    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
-    color: #fff;
+    background-color: #b8f2e6;
+    box-shadow: 0px 15px 20px r#b8f2e6;
+    color: #ffa69e;
     transform: translateY(-7px);
   }
   &:focus {
@@ -111,9 +118,17 @@ const Button = styled.button`
   }
 `;
 const FormStyle = styled.form`
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  margin: 10px;
+  font-family: "Roboto Slab", serif;
+  margin-top: 60px;
+`;
+
+const H2 = styled.h2`
+  color: #b8f2e6;
+  font-size: 30px;
+  padding-bottom: 10px;
+  letter-spacing: 2px;
 `;

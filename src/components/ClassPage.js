@@ -96,6 +96,10 @@ const ClassPage = (props) => {
         <>
           {" "}
           <FormStyle onSubmit={onEditSubmit}>
+            <ButtonDiv2>
+              <Button type="submit">Submit</Button>
+              <Button onClick={cancelEdit}>Cancel</Button>
+            </ButtonDiv2>
             <FormAlign>
               <SelectContainer>
                 Class name:
@@ -174,24 +178,26 @@ const ClassPage = (props) => {
                 />
               </SelectContainer>
             </FormAlign>
-            <Button type="submit">Submit</Button>
-            <Button onClick={cancelEdit}>Cancel</Button>
           </FormStyle>
         </>
       ) : (
         <>
-          {" "}
-          <button onClick={editClassHandler}>Edit the class</button>
-          <button onClick={deleteHandler}>Delete the class</button>
-          <p>Class Name: {aClass.classname}</p>
-          <p>Location: {aClass.location}</p>
-          <p>Date: {aClass.date}</p>
-          <p>Time: {aClass.time}</p>
-          <p>Class Type: {aClass.classtype}</p>
-          <p>Duration: {aClass.duration}</p>
-          <p>IntensityLevel: {aClass.intensityLevel}</p>
-          <p>Current Attendees Number: {aClass.currentAttendeesNo}</p>
-          <p>Max Size: {aClass.maxsize}</p>
+          <MainDiv>
+            <H2>Class Details</H2>
+            <ButtonDiv>
+              <Button onClick={editClassHandler}>Edit the class</Button>
+              <Button onClick={deleteHandler}>Delete the class</Button>
+            </ButtonDiv>
+            <p>Class Name: {aClass.classname}</p>
+            <p>Location: {aClass.location}</p>
+            <p>Date: {aClass.date}</p>
+            <p>Time: {aClass.time}</p>
+            <p>Class Type: {aClass.classtype}</p>
+            <p>Duration: {aClass.duration}</p>
+            <p>IntensityLevel: {aClass.intensityLevel}</p>
+            <p>Current Attendees Number: {aClass.currentAttendeesNo}</p>
+            <p>Max Size: {aClass.maxsize}</p>
+          </MainDiv>
         </>
       )}
     </div>
@@ -206,23 +212,13 @@ const FormAlign = styled.div`
   justify-content: flex-end;
   align-items: flex-end;
   max-width: 400px;
-  border: 1px solid black;
+  border: 1px solid #ffa69e;
   padding: 20px;
   border-radius: 10px;
 `;
 const SelectContainer = styled.div`
   display: flex;
   align-items: center;
-`;
-const Select = styled.select`
-  margin: 20px;
-  width: 230px;
-  border: 2px solid black;
-  height: 30px;
-  border-radius: 10px;
-  &:focus {
-    outline: 0;
-  }
 `;
 const Input = styled.input`
   margin: 20px;
@@ -237,15 +233,15 @@ const Input = styled.input`
 `;
 
 const Button = styled.button`
-  width: 140px;
+  width: 240px;
   height: 45px;
   font-family: "Roboto", sans-serif;
-  font-size: 11px;
+  font-size: 15px;
   text-transform: uppercase;
   letter-spacing: 2.5px;
   font-weight: 500;
   color: #000;
-  background: linear-gradient(to right, #aed9e0, #b8f2e6);
+  background-color: #fff;
   border: none;
   border-radius: 45px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
@@ -253,13 +249,16 @@ const Button = styled.button`
   cursor: pointer;
   outline: none;
   display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   margin: 10px;
+  margin-top: 20px;
+
   &:hover {
-    background-color: #2ee59d;
-    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
-    color: #fff;
+    background-color: #b8f2e6;
+    box-shadow: 0px 15px 20px r#b8f2e6;
+    color: #ffa69e;
     transform: translateY(-7px);
   }
   &:focus {
@@ -272,4 +271,35 @@ const FormStyle = styled.form`
   justify-content: center;
   align-items: center;
   margin: 10px;
+`;
+
+const H2 = styled.h2`
+  color: #b8f2e6;
+  font-size: 30px;
+  padding-bottom: 10px;
+  letter-spacing: 1px;
+`;
+const MainDiv = styled.div`
+  width: 60%;
+  border: 4px solid #ffa69e;
+  margin: auto;
+  margin-top: 100px;
+  text-align: center;
+  border-radius: 20px;
+  font-size: 20px;
+`;
+const ButtonDiv = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+
+  padding-bottom: 20px;
+`;
+
+const ButtonDiv2 = styled.div`
+  width: 40%;
+  display: flex;
+  justify-content: space-around;
+
+  padding-bottom: 20px;
 `;
