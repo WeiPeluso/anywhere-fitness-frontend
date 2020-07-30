@@ -32,6 +32,7 @@ const ClassDiv = styled.div`
   background-color: white;
   width: 20%;
   font-size: 20px;
+  margin-top: 20px;
 `;
 
 const ClassLink = styled(Link)`
