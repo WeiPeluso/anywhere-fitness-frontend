@@ -35,10 +35,17 @@ const CreateClass = () => {
     setFormState({ ...formState, [e.target.name]: e.target.value });
   };
 
+  const cancelCreate = (e) => {
+    history.push("/instructor");
+  };
+
   return (
     <div>
       <FormStyle onSubmit={formSubmit}>
-        <Button type="submit">Submit</Button>
+        <ButtonDiv2>
+          <Button type="submit">Submit</Button>
+          <Button onClick={cancelCreate}>Cancel</Button>
+        </ButtonDiv2>
         <FormAlign>
           <SelectContainer>
             Class name:
@@ -197,4 +204,12 @@ const FormStyle = styled.form`
   justify-content: center;
   align-items: center;
   margin: 10px;
+`;
+
+const ButtonDiv2 = styled.div`
+  width: 40%;
+  display: flex;
+  justify-content: space-around;
+
+  padding-bottom: 20px;
 `;
